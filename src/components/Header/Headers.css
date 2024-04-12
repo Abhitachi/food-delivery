@@ -6,7 +6,7 @@
     position:relative;
 }
 
-.hero-contents{
+.header-contents{
     position:absolute;
     display:flex;
     flex-direction:column;
@@ -21,7 +21,12 @@
 .header-contents h2{
     font-weight:500;
     color:white;
-    font-size:1vw;
+    font-size:max(4.5vw,22px);
+}
+
+.header-contents p{
+    color: white;
+    font-size: 1vw;
 }
 
 .header-contents button{
