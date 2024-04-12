@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import Cart from "./pages/Cart/Cart";
@@ -7,12 +8,17 @@ import Home from "./pages/Home/Home";
 import Order from "./pages/Order/Order";
 
 function App() {
-  const [showLogin, setShowLogin] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
+  const [user, setUser] = useState("");
   return (
     <>
-      {showLogin ? <Login setShowLogin={setShowLogin} /> : <></>}
+      {showLogin ? (
+        <Login setShowLogin={setShowLogin} setUser={setUser} user={user} />
+      ) : (
+        <></>
+      )}
       <div className="app">
-        <Navbar setShowLogin={setShowLogin} />
+        <Navbar setShowLogin={setShowLogin} showLogin={showLogin} user={user} />
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -20,7 +26,7 @@ function App() {
           <Route path="/order" element={<Order />} />
         </Routes>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

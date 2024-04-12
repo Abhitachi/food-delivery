@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../../assets/assets";
+import { StoreContext } from "../../context/StoreContext";
 import "./Login.css";
 
 const Login = ({ setShowLogin }) => {
   const [loginState, setLoginState] = useState("Sign Up");
+  const { setUser } = useContext(StoreContext);
+  const { user } = useContext(StoreContext);
 
   return (
     <div className="login-popup">
@@ -20,12 +23,24 @@ const Login = ({ setShowLogin }) => {
           {loginState === "Login" ? (
             <></>
           ) : (
-            <input type="text" placeholder="Enter Name" required />
+            <input
+              type="text"
+              placeholder="Enter Name"
+              required
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
+            />
           )}
-          <input type="text" placeholder="Enter Email" required />
+          <input
+            type="text"
+            placeholder="Enter Email"
+            required
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
           <input type="password" placeholder="Enter Password" required />
         </div>
-        <button>{loginState === "Sing Up" ? "Create Account" : "Login"}</button>
+        <button>{loginState === "Sign Up" ? "Create Account" : "Login"}</button>
         <div className="login-popup-condition">
           <input type="checkbox" required />
           <p>by Continuing, I agree to the terms of use & privacy policy.</p>
