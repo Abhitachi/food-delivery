@@ -9,16 +9,12 @@ import Order from "./pages/Order/Order";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
-  const [user, setUser] = useState("");
+
   return (
     <>
-      {showLogin ? (
-        <Login setShowLogin={setShowLogin} setUser={setUser} user={user} />
-      ) : (
-        <></>
-      )}
+      {showLogin ? <Login setShowLogin={setShowLogin} /> : <></>}
       <div className="app">
-        <Navbar setShowLogin={setShowLogin} showLogin={showLogin} user={user} />
+        <Navbar setShowLogin={setShowLogin} showLogin={showLogin} />
 
         <Routes>
           <Route path="/" element={<Home />} />

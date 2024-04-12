@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../context/StoreContext";
 import "./Login.css";
@@ -7,6 +7,8 @@ const Login = ({ setShowLogin }) => {
   const [loginState, setLoginState] = useState("Sign Up");
   const { setUser } = useContext(StoreContext);
   const { user } = useContext(StoreContext);
+
+
 
   return (
     <div className="login-popup">
@@ -27,16 +29,13 @@ const Login = ({ setShowLogin }) => {
               type="text"
               placeholder="Enter Name"
               required
-              value={user}
-              onChange={(e) => setUser(e.target.value)}
+    
             />
           )}
           <input
             type="text"
             placeholder="Enter Email"
             required
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
           />
           <input type="password" placeholder="Enter Password" required />
         </div>

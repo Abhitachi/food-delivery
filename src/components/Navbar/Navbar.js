@@ -7,7 +7,7 @@ import "./Navbar.css";
 const Navbar = ({ setShowLogin, showLogin }) => {
   const [menu, setMenu] = useState("home");
   const { getTotalCartAmount } = useContext(StoreContext);
-  const { user } = useContext(StoreContext);
+
 
   return (
     <div className="navbar">
@@ -46,7 +46,6 @@ const Navbar = ({ setShowLogin, showLogin }) => {
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
       </div>
-      <p>{user}</p>
       <button onClick={() => setShowLogin(true)}>
         {showLogin ? "Sign Out" : "Sign In"}
       </button>
